@@ -1,0 +1,14 @@
+{
+  "name": "typesafe-chicken-egg",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "使用 TypeSafe API 回答「先有雞還是先有蛋」的問題",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0",
+    "dotenv": "^16.4.5"
+  }
+}

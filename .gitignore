@@ -1,0 +1,8 @@
+# 環境變數檔案（包含 API Key）
+.env
+
+# 依賴目錄
+node_modules/
+
+# 日誌檔案
+*.log
