@@ -1,5 +1,6 @@
 import { TypeSafeClient, choice } from '@typesafe-ai/sdk';
 import 'dotenv/config';
+import { formatProbabilityBar, formatConfidenceMessage } from './format.js';
 
 // 禁用 SSL 證書驗證（僅限開發環境）
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -52,18 +53,12 @@ async function answerChickenEggQuestion() {
     console.log('\n機率分佈:');
 
     for (const [option, probability] of Object.entries(answer.probabilities)) {
-      const bar = '█'.repeat(Math.round(probability * 20));
+      const bar = formatProbabilityBar(probability);
       console.log(`  ${option}: ${(probability * 100).toFixed(1)}% ${bar}`);
     }
 
     // 根據置信度提供建議
-    if (answer.confidence < 0.5) {
-      console.log('\n⚠️  模型的置信度較低，這可能是一個有爭議的問題');
-    } else if (answer.confidence < 0.8) {
-      console.log('\n✅ 模型有中等置信度');
-    } else {
-      console.log('\n✅✅ 模型有高度置信度');
-    }
+    console.log(`\n${formatConfidenceMessage(answer.confidence)}`);
 
     console.log('='.repeat(50));
 

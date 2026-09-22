@@ -6,3 +6,6 @@ node_modules/
 
 # 日誌檔案
 *.log
+
+# Claude Code 本機設定（含個人化權限等，不應共用）
+.claude/settings.local.json
